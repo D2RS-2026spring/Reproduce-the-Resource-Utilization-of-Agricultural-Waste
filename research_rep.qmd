@@ -11,9 +11,8 @@ format:
 # 一、数据准备
 ```{r}
 set.seed(123)
-
 group <- factor(c("UTL0", "UTL1", "UTL2", "UTL3",
-                  "OP0",  "OP1",  "OP2",  "OP3"))
+                  "OP0", "OP1", "OP2", "OP3"))
 
 H2_excess <- c(0, 4.44, 4.83, 5.29,
                0, 4.06, 4.78, 5.24)
@@ -68,3 +67,24 @@ ggplot(dat, aes(x = group, y = H2_excess, fill = group)) +
         cor_result <- cor.test(dat$BET_SSA, dat$H2_excess, method = "kendall")
 cor_result
 
+
+# 二、描述性统计
+summary(dat[, c("H2_excess", "BET_SSA")])
+
+# 三、相关性分析（BET比表面积 与 过量储氢量）
+```{r}
+cor.test(dat$BET_SSA, dat$H2_excess, method = "kendall")
+cor.test(dat$BET_SSA, dat$H2_excess, method = "pearson")
+```
+
+**备注**: 由于数据存在并列值（ties），Kendall's tau 使用了正态近似计算 p 值，但结果依然显著（p < 0.001）。
+```{r}
+# 四、比较 UTL 和 OP 两组之间的差异
+
+dat$type <- ifelse(grepl("UTL", dat$group), "UTL", "OP")
+t.test(H2_excess ~ type, data = dat)   # 比较过量储氢量
+t.test(BET_SSA ~ type, data = dat)     # 比较比表面积
+
+# 五、保存图表
+ggsave("results/h2_storage_comparison_reproduced.png", width = 6, height = 4)
+```
