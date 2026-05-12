@@ -17,7 +17,7 @@
 @Janney-huang、@JiangYee393、@hanyu-Yang、@caoyao-03、@Olivia-yao710
 -项目内容：
 -文章链接：https://github.com/user-attachments/files/26074845/Transforming-breakfast-bio-waste-into-hydrog_2025_International-Journal-of-H.pdf
--仓库链接：https://janney-huang.github.io/Reproduce-the-Resource-Utilization-of-Agricultural-Waste/
+-仓库链接：https://github.com/D2RS-2026spring/Reproduce-the-Resource-Utilization-of
 - 复现农业废弃物还田、土壤磷素循环、作物产量响应等核心研究内容
 - 提供完整数据集、可运行代码、标准化分析流程与可视化结果
 
